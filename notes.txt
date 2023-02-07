@@ -1,0 +1,20 @@
+
+
+Containers to write:
+
+	- Vector
+	- Map
+	- Stack
+	- Dependencies for these
+
+
+Other things to implements:
+
+	- iterator_traits
+	- reverse_iterator
+	- enable_if
+	- is_integral
+	- equal and/or lexographical_compare
+	- std::pair
+	- std::make_pair
+	
