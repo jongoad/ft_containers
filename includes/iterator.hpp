@@ -40,14 +40,14 @@ namespace ft {
 	};
 
 	//
-	template <class category, class T, class distance = std::ptrdiff_t,
-				class pointer = T*, class reference = T&>
+	template <class Category, class T, class Distance = std::ptrdiff_t,
+				class Pointer = T*, class Reference = T&>
 	struct iterator {
-		typedef category	iterator_category;
+		typedef Category	iterator_category;
 		typedef T			value_type;
-		typedef	distance	difference_type;
-		typedef pointer		pointer;
-		typedef reference	reference;
+		typedef	Distance	difference_type;
+		typedef Pointer		pointer;
+		typedef Reference	reference;
 	};
 
 
@@ -64,7 +64,7 @@ namespace ft {
 			typedef typename	iterator_traits<Iter>::value_type		value_type;
 			typedef typename	iterator_traits<Iter>::difference_type	difference_type;
 			typedef typename	iterator_traits<Iter>::pointer			pointer;
-			typedef typename	iterator_traits<Iter>::reference		reference:
+			typedef typename	iterator_traits<Iter>::reference		reference;
 		
 		protected:
 			Iter	current_;

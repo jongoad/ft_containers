@@ -8,9 +8,9 @@
 #include <vector>
 namespace ft = std;
 #else
-#include <map.hpp>
-#include <stack.hpp>
-#include <vector.hpp>
+#include <../includes/map.hpp>
+#include <../includes/stack.hpp>
+#include <../includes/vector.hpp>
 #endif
 
 #include <stdlib.h>

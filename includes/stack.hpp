@@ -1,14 +1,13 @@
-#ifndef STACK_HPP
-# define STACK_HPP
-
 #pragma once
 
 // #include "vector.hpp"
 #include <vector>
 
+//FIXME: Change to ft::vector when its implemented
+
 namespace ft {
 
-	template<class T, class container = std::vector<T> >	//FIXME: Change to ft::vector when its implemented
+	template<class T, class container = std::vector<T> >
 	class stack {
 		public:
 
@@ -27,18 +26,19 @@ namespace ft {
 			stack(const stack& other) : c(other.c) { }
 			
 			// Equals operator overload
-			stack&	operator=(const stack& rhs) { this.c = rhs.c; }
+			stack&	operator=(const stack& other) { c = other.c; }
 
 
-			/* Access Functions */
+			/*lhsccess Functions */
 			//top
 			reference	top() { return c.back(); }
-			
+			const_reference	top() const {return c.back(); }
+
 			//empty
-			bool		empty() { return c.empty(); }
+			bool		empty() const { return c.empty(); }
 			
 			//size
-			size_type	size() { return c.size(); }
+			size_type	size() const { return c.size(); }
 
 			//push
 			void		push(const_reference val) { c.push_back(val); }
@@ -49,29 +49,27 @@ namespace ft {
 		protected:
 			container	c;
 
-			template<class T, class contain>
-			friend bool	operator==(const stack<class T, class contain>& a, const stack<class T, class contain>& b);
-			template<class T, class contain>
-			friend bool	operator<(const stack<class T, class contain>& a, const stack<class T, class contain>& b);
+			template<class Ty, class contain>
+			friend bool	operator==(const ft::stack<Ty,contain>& lhs, const ft::stack<Ty,contain>& rhs);
+			template<class Ty, class contain>
+			friend bool	operator<(const ft::stack<Ty,contain>& lhs, const ft::stack<Ty,contain>& rhs);
 		
 	};
 
 	//Non-Member Functions
 
 	/* Operator Overloads */
-	template<class T, class contain>
-	bool	operator==(const stack<class T>& a, const stack<class T>& b) { return a.c == b.c; }
-	template<class T, class contain>
-	bool	operator!=(const stack<class T>& a, const stack<class T>& b) { return !(a == b); }
-	template<class T, class contain>
-	bool	operator<(const stack<class T>& a, const stack<class T>& b) { return a.c < b.c; }
-	template<class T, class contain>
-	bool	operator>(const stack<class T>& a, const stack<class T>& b) { return b < a; }
-	template<class T, class contain>
-	bool	operator<=(const stack<class T>& a, const stack<class T>& b) { return !(b < a); }
-	template<class T, class contain>
-	bool	operator>=(const stack<class T>& a, const stack<class T>& b) { return !(a < b); }
+	template<class Ty, class contain>
+	bool	operator==(const stack<Ty, contain>& lhs, const stack<Ty, contain>& rhs) { return lhs.c == rhs.c; }
+	template<class Ty, class contain>
+	bool	operator!=(const stack<Ty, contain>& lhs, const stack<Ty, contain>& rhs) { return !(lhs == rhs); }
+	template<class Ty, class contain>
+	bool	operator<(const stack<Ty, contain>& lhs, const stack<Ty, contain>& rhs) { return lhs.c < rhs.c; }
+	template<class Ty, class contain>
+	bool	operator>(const stack<Ty, contain>& lhs, const stack<Ty, contain>& rhs) { return rhs < lhs; }
+	template<class Ty, class contain>
+	bool	operator<=(const stack<Ty, contain>& lhs, const stack<Ty, contain>& rhs) { return !(rhs < lhs); }
+	template<class Ty, class contain>
+	bool	operator>=(const stack<Ty, contain>& lhs, const stack<Ty, contain>& rhs) { return !(lhs < rhs); }
 
-}
-
-#endif
+} //namespace ft end

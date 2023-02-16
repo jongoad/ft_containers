@@ -13,7 +13,7 @@ namespace ft {
 
 	//QoL definition for enable_if
 	template <bool B, class T>
-	using enable_if_t = enable_if<B, T>::type;
+	using enable_if_t = typename enable_if<B, T>::type;
 
 	//is_integral
 	template <class T, T v>
@@ -50,25 +50,17 @@ namespace ft {
 	template <>
 	struct is_integral_helper<short> : public true_type {};
 	template <>
-	struct is_integral_helper<signed short> : public true_type {};
-	template <>
 	struct is_integral_helper<unsigned short> : public true_type {};
 	template <>
 	struct is_integral_helper<int> : public true_type {};
-	template <>
-	struct is_integral_helper<signed int> : public true_type {};
 	template <>
 	struct is_integral_helper<unsigned int> : public true_type {};
 	template <>
 	struct is_integral_helper<long> : public true_type {};
 	template <>
-	struct is_integral_helper<signed long> : public true_type {};
-	template <>
 	struct is_integral_helper<unsigned long> : public true_type {};
 	template <>
 	struct is_integral_helper<long long> : public true_type {};
-	template <>
-	struct is_integral_helper<signed long long> : public true_type {};
 	template <>
 	struct is_integral_helper<unsigned long long> : public true_type {};
 
@@ -94,7 +86,7 @@ namespace ft {
 
 	//QoL define for remove_cv
 	template <class T>
-	using remove_cv_t = remove_cv<T>::type;
+	using remove_cv_t = typename remove_cv<T>::type;
 
 	//is_integral
 	template <class T>

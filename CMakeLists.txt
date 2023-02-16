@@ -9,103 +9,104 @@ add_compile_options(-Wall -Werror -Wextra)
 
 find_package(GTest CONFIG REQUIRED)
 
-# add_library(
-# 	ft_STL
-# 	SHARED
-# 	include/algorithm.hpp
-# 	include/iterator.hpp
-# 	include/map.hpp
-# 	include/tree.hpp
-# 	include/stack.hpp
-# 	include/type_traits.hpp
-# 	include/utility.hpp
-# 	include/vector.hpp
-# )
-# set_target_properties(
-# 	ft_STL
-# 	PROPERTIES LINKER_LANGUAGE CXX
-# )
-# target_include_directories(
-# 	ft_STL
-# 	INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include"
-# )
+add_library(
+	ft_STL
+	SHARED
 
-# # Test executables
-# enable_testing()
+	# include/algorithm.hpp
+	includes/iterator.hpp
+
+	# includes/map.hpp
+	# includes/tree.hpp
+	includes/stack.hpp
+	includes/type_traits.hpp
+
+	# includes/utility.hpp
+	includes/vector.hpp
+)
+set_target_properties(
+	ft_STL
+	PROPERTIES LINKER_LANGUAGE CXX
+)
+target_include_directories(
+	ft_STL
+	INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+
+# Test executables
+enable_testing()
 
 # add_executable(algorithm_test test/algorithm_test.cpp)
 # target_link_libraries(
-# 	algorithm_test
-# 	PUBLIC ft_STL
-# 	GTest::gtest_main
+# algorithm_test
+# PUBLIC ft_STL
+# GTest::gtest_main
 # )
 # add_test(
-# 	NAME algorithm_test
-# 	COMMAND $<TARGET_FILE:algorithm_test>
+# NAME algorithm_test
+# COMMAND $<TARGET_FILE:algorithm_test>
 # )
 
 # add_executable(iterator_test test/iterator_test.cpp)
 # target_link_libraries(
-# 	iterator_test
-# 	PUBLIC ft_STL
-# 	GTest::gtest_main
+# iterator_test
+# PUBLIC ft_STL
+# GTest::gtest_main
 # )
 # add_test(
-# 	NAME iterator_test
-# 	COMMAND $<TARGET_FILE:iterator_test>
+# NAME iterator_test
+# COMMAND $<TARGET_FILE:iterator_test>
 # )
 
 # add_executable(map_test test/map_test.cpp)
 # target_link_libraries(
-# 	map_test
-# 	PUBLIC ft_STL
-# 	GTest::gtest_main
+# map_test
+# PUBLIC ft_STL
+# GTest::gtest_main
 # )
 # add_test(
-# 	NAME map_test
-# 	COMMAND $<TARGET_FILE:map_test>
+# NAME map_test
+# COMMAND $<TARGET_FILE:map_test>
 # )
 
 # add_executable(tree_test test/tree_test.cpp)
 # target_link_libraries(
-# 	tree_test
-# 	PUBLIC ft_STL
-# 	GTest::gtest_main
+# tree_test
+# PUBLIC ft_STL
+# GTest::gtest_main
 # )
 # add_test(
-# 	NAME tree_test
-# 	COMMAND $<TARGET_FILE:tree_test>
+# NAME tree_test
+# COMMAND $<TARGET_FILE:tree_test>
 # )
-
-# add_executable(stack_test test/stack_test.cpp)
-# target_link_libraries(
-# 	stack_test
-# 	PUBLIC ft_STL
-# 	GTest::gtest_main
-# )
-# add_test(
-# 	NAME stack_test
-# 	COMMAND $<TARGET_FILE:stack_test>
-# )
+add_executable(stack_test test/stack_test.cpp)
+target_link_libraries(
+	stack_test
+	PUBLIC ft_STL
+	GTest::gtest_main
+)
+add_test(
+	NAME stack_test
+	COMMAND $<TARGET_FILE:stack_test>
+)
 
 # add_executable(utility_test test/utility_test.cpp)
 # target_link_libraries(
-# 	utility_test
-# 	PUBLIC ft_STL
-# 	GTest::gtest_main
+# utility_test
+# PUBLIC ft_STL
+# GTest::gtest_main
 # )
 # add_test(
-# 	NAME utility_test
-# 	COMMAND $<TARGET_FILE:utility_test>
+# NAME utility_test
+# COMMAND $<TARGET_FILE:utility_test>
 # )
-
-# add_executable(vector_test test/vector_test.cpp)
-# target_link_libraries(
-# 	vector_test
-# 	PUBLIC ft_STL
-# 	GTest::gtest_main
-# )
-# add_test(
-# 	NAME vector_test
-# 	COMMAND $<TARGET_FILE:vector_test>
-# )
+add_executable(vector_test test/vector_test.cpp)
+target_link_libraries(
+	vector_test
+	PUBLIC ft_STL
+	GTest::gtest_main
+)
+add_test(
+	NAME vector_test
+	COMMAND $<TARGET_FILE:vector_test>
+)

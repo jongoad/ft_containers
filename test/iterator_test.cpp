@@ -1,7 +1,7 @@
 
-#include "iterator.hpp"
+#include "../includes/iterator.hpp"
 
-#include <gtest/gtest.h>
+#include <../vcpkg/packages/gtest_x64-osx/include/gtest/gtest.h>
 
 #include <iostream>
 #include <iterator>
