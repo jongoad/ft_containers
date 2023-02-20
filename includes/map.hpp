@@ -16,8 +16,8 @@ namespace ft {
 		
 		public:
 			//Handle member types from std::binary_function
-			typedef value_type first_argument_type;
-      	 	typedef value_type second_argument_type;
+			typedef Key first_argument_type;
+      	 	typedef Key second_argument_type;
        		typedef bool result_type;
 
 			//Constructors
@@ -99,13 +99,11 @@ namespace ft {
 						return comp_(first.first, second.first);
 					}
 
-
 				protected:
 					value_compare(const key_compare& c) : comp_(c);
 					key_compare comp_;
 			};
 
-		public:
 			//Constructors & destructors
 			map() : rb_tree_(adapted_compare()) {}
 
@@ -134,7 +132,7 @@ namespace ft {
 				iterator it = find(key);
 				if (it == end())
 					throw std::out_of_range("Key not found");
-				return it->second;
+				return (it->second);
 			}
 
 			const T& at(const key_type& key) const {
@@ -145,9 +143,10 @@ namespace ft {
 
 			}
 
-			//Why is mik inserting here?
 			T& operator[](const key_type& key) {
-				
+				//Return from this version of insert is a <iterator,bool> pair
+				//Second value tells us if newly inserted or not, which we do not care about here
+				return insert(ft::make_pair(key, T())).first->second;
 			}  
 
 			//Iterators
@@ -171,8 +170,13 @@ namespace ft {
 			//Modifiers
 			void	clear() { rb_tree_.clear(); }
 
-			template <typename InputIt>
+			ft::pair<iterator, bool>	insert(const value_type& value) {
+				return rb_tree_.insert(value);
+			}
+
+			template <class InputIt>
 			void insert(InputIt first, InputIt last) { rb_tree_.insert(first, last); }
+
 			void erase(iterator pos) { rb_tree_.erase(pos); }
 			void erase(const key_type& key) { rb_tree_.erase(key); }
 			void erase(iterator first, iterator last) ( rb_tree_.erase(first, last); )
@@ -214,8 +218,6 @@ namespace ft {
 				return value_compare(rb_tree_.value_comp().key_comp());
 			}
 
-
-
 		private:
 			base	rb_tree_;
 	};
@@ -231,4 +233,4 @@ namespace ft {
 
 	// ft::swap();
 
-}; //namespace ft end
+} //namespace ft
