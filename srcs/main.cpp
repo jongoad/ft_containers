@@ -1,9 +1,9 @@
-#include "Vector.hpp"
+#include <map>
 
-
-using namespace ft;
 
 int	main(void)
 {
-	
+	std::map<int,int> test;
+
+	test.insert(std::pair<int,int>(1,2));
 }

@@ -3,13 +3,10 @@
 
 namespace ft {
 
-	template<class T1, class T2>
+	template<typename T1, typename T2>
 	struct pair {
 		//Default constructor
 		pair() : first(T1()), second(T2()) {}
-
-		
-		pair(T1 a, T2 b) : first(a), second(b) {}
 
 		//Copy constructor
 		template<class U, class V>
@@ -28,7 +25,7 @@ namespace ft {
 	/************************/
 
 	/* make_pair */
-	template<class T1, class T2>
+	template<typename T1, typename T2>
 	pair<T1, T2>	make_pair(T1 a, T2 b) { return pair<T1, T2>(a, b); }
 
 	/* Operator Overloads */

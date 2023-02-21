@@ -3,7 +3,7 @@
 #--------------------------------#
 NAME			:= containers
 
-CPP_FILES		:= main.cpp
+CPP_FILES		:= testenv.cpp
 
 #---------------------------------------------------------#
 #   Directory information and object directory building   #

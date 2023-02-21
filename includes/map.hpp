@@ -57,13 +57,13 @@ namespace ft {
 
 	//map class definition
 	template <typename Key, typename T, typename Compare = std::less<Key>,
-		typename Allocator = std::allocator<pair<const Key, T> > >
+		typename Allocator = std::allocator<ft::pair<const Key, T> > >
 	class map {
 		//STL container typedefs
 		public:
 			typedef Key											key_type;
 			typedef T											stored_type;
-			typedef pair<const key_type,stored_type>			value_type;
+			typedef ft::pair<const key_type,stored_type>			value_type;
 			typedef Compare										key_compare;
 			typedef Allocator									allocator_type;
 			typedef typename allocator_type::size_type			size_type;
@@ -100,7 +100,7 @@ namespace ft {
 					}
 
 				protected:
-					value_compare(const key_compare& c) : comp_(c);
+					value_compare(const key_compare& c) : comp_(c) {}
 					key_compare comp_;
 			};
 
@@ -165,49 +165,54 @@ namespace ft {
 			//Capacity
 			bool	empty() const { return rb_tree_.empty(); }
 			size_type	size() const { return rb_tree_.size(); }
-			size_type	max_size() const { return rb_tree_.max_size(); }
+			// size_type	max_size() const { return rb_tree_.max_size(); }
 
 			//Modifiers
-			void	clear() { rb_tree_.clear(); }
+			// void	clear() { rb_tree_.clear(); }
 
+			//Single inserter with was_key_found bool return (std::binary_function)
 			ft::pair<iterator, bool>	insert(const value_type& value) {
 				return rb_tree_.insert(value);
 			}
 
-			template <class InputIt>
-			void insert(InputIt first, InputIt last) { rb_tree_.insert(first, last); }
+			//hint inserter
+			// iterator insert(iterator pos, const value_type& value);
+			
+			//Range inserter
+			// template <class InputIt>
+			// void insert(InputIt first, InputIt last) { rb_tree_.insert(first, last); }
 
-			void erase(iterator pos) { rb_tree_.erase(pos); }
-			void erase(const key_type& key) { rb_tree_.erase(key); }
-			void erase(iterator first, iterator last) ( rb_tree_.erase(first, last); )
+			// void erase(iterator pos) { rb_tree_.erase(pos); }
+			// void erase(const key_type& key) { rb_tree_.erase(key); }
+			// void erase(iterator first, iterator last) ( rb_tree_.erase(first, last); )
 
 
-			void	swap(map& other) { rb_tree_.swap(other.rb_tree_); }
+			// void	swap(map& other) { rb_tree_.swap(other.rb_tree_); }
 
 			//Lookup
-			size_type	count(const key_type& key) const { return rb_tree_.count(key); }
-			itertor	find(const key_type& key) { return rb_tree_.find(key); }
+			// size_type	count(const key_type& key) const { return rb_tree_.count(key); }
+			iterator	find(const key_type& key) { return rb_tree_.find(key); }
 
-			pair<iterator, iterator>	equal_range(const key_type& key) {
-				return rb_tree_.equal_range(key);
-			}
-			pair<const_iterator, const_iterator>	equal_range(const key_type& key) const {
-				return rb_tree_.equal_range(key);
-			}
+			// pair<iterator, iterator>	equal_range(const key_type& key) {
+			// 	return rb_tree_.equal_range(key);
+			// }
+			// pair<const_iterator, const_iterator>	equal_range(const key_type& key) const {
+			// 	return rb_tree_.equal_range(key);
+			// }
 
-			iterator	lower_bound(const key_type& key) {
-				return rb_tree_.lower_bound(key);
-			}
-			const_iterator	lower_bound(const key_type& key) const {
-				return rb_tree_.lower_bound(key);
-			};
+			// iterator	lower_bound(const key_type& key) {
+			// 	return rb_tree_.lower_bound(key);
+			// }
+			// const_iterator	lower_bound(const key_type& key) const {
+			// 	return rb_tree_.lower_bound(key);
+			// };
 
-			iterator	upper_bound(const key_type& key) {
-				return rb_tree_.upper_bound(key);
-			}
-			const_iterator	upper_bound(const key_type& key) const {
-				return rb_tree_.upper_bound(key);
-			}
+			// iterator	upper_bound(const key_type& key) {
+			// 	return rb_tree_.upper_bound(key);
+			// }
+			// const_iterator	upper_bound(const key_type& key) const {
+			// 	return rb_tree_.upper_bound(key);
+			// }
 
 			//Observers
 			key_compare key_comp() const {
